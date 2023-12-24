@@ -1,10 +1,10 @@
-package com.restful.web.services.restful.web.services;
+package com.restful.web.services.restfulwebservices;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class RestfulWebServicesApplicationTests {
 
 	@Test
 	void contextLoads() {

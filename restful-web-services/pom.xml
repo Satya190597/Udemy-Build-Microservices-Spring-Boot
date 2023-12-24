@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.restful.web.services</groupId>
-	<artifactId>restful.web.services</artifactId>
+	<artifactId>restful-web-services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>restful.web.services</name>
+	<name>restful-web-services</name>
 	<description>Chapter 4 - RESTful Web Services With Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
