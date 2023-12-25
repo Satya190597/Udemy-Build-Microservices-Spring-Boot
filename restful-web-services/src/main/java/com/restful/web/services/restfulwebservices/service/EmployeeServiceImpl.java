@@ -30,6 +30,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> new EmployeeNotFound("Employee Not Found"));
     }
 
+    public boolean deleteEmployeeById(String employeeId) {
+        Employee filteredEmployee = employeeList.stream().filter(employee -> employee.getEmployeeId().equalsIgnoreCase(employeeId))
+                .findFirst()
+                .orElseThrow(() -> new EmployeeNotFound("Employee Not Found"));
+        employeeList.remove(filteredEmployee);
+        return true;
+    }
+
     private boolean isEmployeeIdPresent(Employee employee) {
         return !Objects.isNull(employee.getEmployeeId()) || !Objects.isNull(employee.getEmailId());
     }
