@@ -1,6 +1,7 @@
 package com.restful.web.services.restfulwebservices.service;
 
 import com.restful.web.services.restfulwebservices.dto.Employee;
+import com.restful.web.services.restfulwebservices.exception.EmployeeNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getEmployeeById(String employeeId) {
         return employeeList.stream().filter((employee -> employee.getEmployeeId().equalsIgnoreCase(employeeId)))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Employee Not Found"));
+                .orElseThrow(() -> new EmployeeNotFound("Employee Not Found"));
     }
 
     private boolean isEmployeeIdPresent(Employee employee) {
