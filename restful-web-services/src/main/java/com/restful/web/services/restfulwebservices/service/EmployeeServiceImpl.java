@@ -11,14 +11,25 @@ import java.util.UUID;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     List<Employee> employeeList = new ArrayList<>();
+
     public Employee save(Employee employee) {
-        if(!isEmployeeIdPresent(employee))
+        if (!isEmployeeIdPresent(employee))
             employee.setEmployeeId(UUID.randomUUID().toString());
         employeeList.add(employee);
         return employee;
     }
 
-    public boolean isEmployeeIdPresent(Employee employee) {
+    public List<Employee> getAllEmployee() {
+        return employeeList;
+    }
+
+    public Employee getEmployeeById(String employeeId) {
+        return employeeList.stream().filter((employee -> employee.getEmployeeId().equalsIgnoreCase(employeeId)))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Employee Not Found"));
+    }
+
+    private boolean isEmployeeIdPresent(Employee employee) {
         return !Objects.isNull(employee.getEmployeeId()) || !Objects.isNull(employee.getEmailId());
     }
 }
