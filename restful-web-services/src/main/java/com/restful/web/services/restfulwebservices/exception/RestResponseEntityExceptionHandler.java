@@ -16,4 +16,11 @@ public class RestResponseEntityExceptionHandler {
     public ErrorMessage employeeNotFound(EmployeeNotFound employeeNotFound) {
         return ErrorMessage.builder().status(HttpStatus.NOT_FOUND).message(employeeNotFound.getMessage()).build();
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage genericException(Exception exception) {
+        return ErrorMessage.builder().status(HttpStatus.INTERNAL_SERVER_ERROR).message(exception.getMessage()).build();
+    }
 }
